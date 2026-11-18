@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Inspección Visual PWA</title>
+    <meta name="description" content="Captura de evidencia fotográfica con acceso consciente a cámara.">
+
+    <!-- Instalabilidad -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- iOS / WebKit -->
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="InspecciónPWA">
+
+    <link rel="icon" type="image/png" href="./icons/icon-192.png">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header class="encabezado">
+        <h1>Inspección Visual</h1>
+        <button id="btn-instalar" class="btn btn-secundario" type="button" hidden>Instalar App</button>
+    </header>
+
+    <main class="contenido">
+        <!-- Guía manual de instalación para iPhone/iPad -->
+        <section id="instrucciones-ios" class="tarjeta tarjeta-info" hidden>
+            <p>
+                Para instalar en iPhone, pulsa el icono <strong>Compartir</strong>
+                y selecciona <strong>"Agregar a inicio"</strong>.
+            </p>
+        </section>
+
+        <!-- Visor de cámara -->
+        <div class="visor">
+            <video id="visor-camara" autoplay playsinline muted></video>
+            <p id="visor-vacio" class="visor-vacio">Cámara apagada</p>
+        </div>
+
+        <p id="mensaje-estado" class="estado" role="status" aria-live="polite">
+            La cámara está apagada.
+        </p>
+
+        <!-- Aviso ético de pre-permiso -->
+        <section id="aviso-permiso" class="tarjeta tarjeta-aviso" hidden>
+            <h2>Antes de continuar</h2>
+            <p>
+                Esta aplicación requiere acceso a tu cámara únicamente para mostrar una
+                vista previa local en pantalla. Ninguna imagen se envía a servidores externos.
+            </p>
+            <p class="detalle">
+                Se encenderá primero la <strong>cámara trasera</strong>. Podrás cambiar a la
+                frontal o apagarla en cualquier momento.
+            </p>
+            <div class="acciones">
+                <button id="btn-cancelar-permiso" class="btn btn-secundario" type="button">Ahora no</button>
+                <button id="btn-confirmar-permiso" class="btn btn-primario" type="button">Aceptar y Encender Cámara</button>
+            </div>
+        </section>
+
+        <!-- Controles -->
+        <div class="controles">
+            <button id="btn-preparar-camara" class="btn btn-primario" type="button">Solicitar Acceso a Cámara</button>
+            <button id="btn-alternar-camara" class="btn btn-secundario" type="button" disabled>Cambiar Cámara</button>
+            <button id="btn-apagar-camara" class="btn btn-peligro" type="button" disabled>Apagar Cámara</button>
+        </div>
+    </main>
+
+    <script src="./app.js"></script>
+</body>
+</html>
